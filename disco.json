@@ -1,0 +1,27 @@
+{
+    "version": "1.0",
+    "services": {
+        "web": {
+            "image": "registry:2.8.3",
+            "port": 5000,
+            "volumes": [{
+                "name": "auth",
+                "destinationPath": "/auth"
+            }, {
+                "name": "data",
+                "destinationPath": "/var/lib/registry"
+            }]
+        },
+        "init": {
+            "type": "command",
+            "command": "python init.py",
+            "volumes": [{
+                "name": "auth",
+                "destinationPath": "/auth"
+            }, {
+                "name": "data",
+                "destinationPath": "/var/lib/registry"
+            }]
+        }
+    }
+}
