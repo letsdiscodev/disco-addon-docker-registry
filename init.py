@@ -122,8 +122,7 @@ def use_registry(
         url,
         json=req_body,
         auth=(api_key, ""),
-        headers={"Accept": "text/event-stream"},
-        stream=True,
+        headers={"Accept": "application/json"},
     )
     assert_status_code(response, 200)
 
