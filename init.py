@@ -96,7 +96,7 @@ def set_env_variables(api_key: str, project_name: str, project_domain: str) -> N
     assert_status_code(response, 200)
     resp_body = response.json()
     assert resp_body["deployment"] is not None
-    url = f"http://disco/.disco/projects/{project_name}/deployments/{resp_body['deployment']['number']}/output"
+    url = f"http://disco/projects/{project_name}/deployments/{resp_body['deployment']['number']}/output"
     response = requests.get(
         url,
         auth=(api_key, ""),
@@ -111,7 +111,7 @@ def set_env_variables(api_key: str, project_name: str, project_domain: str) -> N
 def use_registry(
     api_key: str, project_domain: str, username: str, password: str
 ) -> None:
-    url = "http://disco/.disco/disco/registry"
+    url = "http://disco/disco/registry"
     req_body = {
         "host": project_domain,
         "authType": "basic",
