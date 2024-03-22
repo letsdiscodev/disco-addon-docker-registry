@@ -118,7 +118,7 @@ def use_registry(
         "username": username,
         "password": password,
     }
-    response = requests.get(
+    response = requests.post(
         url,
         json=req_body,
         auth=(api_key, ""),
