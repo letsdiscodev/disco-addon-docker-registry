@@ -25,6 +25,7 @@ def main() -> None:
         api_key=api_key, project_name=project_name, project_domain=project_domain
     )
     use_registry(api_key, project_domain, username, password)
+    print("Registry setup complete.")
 
 
 def create_auth_user() -> tuple[str, str]:
@@ -119,7 +120,6 @@ def use_registry(
         "username": username,
         "password": password,
     }
-    print(json.dumps(req_body)) # TODO remove, just for debugging
     response = requests.post(
         url,
         json=req_body,
