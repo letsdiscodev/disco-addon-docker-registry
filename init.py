@@ -111,7 +111,7 @@ def set_env_variables(api_key: str, project_name: str, project_domain: str) -> N
 def use_registry(
     api_key: str, project_domain: str, username: str, password: str
 ) -> None:
-    url = "http://disco/.disco/meta/registry"
+    url = "http://disco/.disco/disco/registry"
     req_body = {
         "host": project_domain,
         "authType": "basic",
