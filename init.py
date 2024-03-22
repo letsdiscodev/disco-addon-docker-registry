@@ -103,9 +103,10 @@ def set_env_variables(api_key: str, project_name: str, project_domain: str) -> N
         headers={"Accept": "text/event-stream"},
         stream=True,
     )
+    assert_status_code(response, 200)
     for event in sseclient.SSEClient(response).events():
         output = json.loads(event.data)
-        print(output["text"], end="")
+        print(output["text"], end="", flush=True)
 
 
 def use_registry(
@@ -118,6 +119,7 @@ def use_registry(
         "username": username,
         "password": password,
     }
+    print(json.dumps(req_body)) # TODO remove, just for debugging
     response = requests.post(
         url,
         json=req_body,
