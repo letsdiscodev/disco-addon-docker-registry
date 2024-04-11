@@ -106,8 +106,11 @@ def set_env_variables(api_key: str, project_name: str, project_domain: str) -> N
     )
     assert_status_code(response, 200)
     for event in sseclient.SSEClient(response).events():
-        output = json.loads(event.data)
-        print(output["text"], end="", flush=True)
+        if event.event == "output":
+            output = json.loads(event.data)
+            print(output["text"], end="", flush=True)
+        elif event.event == "end":
+            break
 
 
 def use_registry(
