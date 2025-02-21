@@ -1,0 +1,18 @@
+[project]
+name = "disco-addon-docker-registry"
+dynamic = ["version"]
+
+[tool.setuptools]
+packages = ["addon"]
+
+[tool.setuptools.dynamic]
+version = {attr = "addon.__version__"}
+
+[project.scripts]
+
+[tool.ruff.lint]
+# Enable the isort rules.
+extend-select = ["I"]
+
+[tool.mypy]
+ignore_missing_imports = true

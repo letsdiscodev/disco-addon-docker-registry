@@ -12,15 +12,26 @@
                 "destinationPath": "/var/lib/registry"
             }]
         },
-        "init": {
-            "type": "command",
-            "command": "python init.py",
+        "endpoints": {
+            "type": "cgi",
+            "command": "addon_cgi",
             "volumes": [{
                 "name": "auth",
                 "destinationPath": "/auth"
             }, {
-                "name": "data",
-                "destinationPath": "/var/lib/registry"
+                "name": "addon-data",
+                "destinationPath": "/addon/data"
+            }]
+        },
+        "hook:deploy:start:before": {
+            "type": "command",
+            "command": "addon_deploy",
+            "volumes": [{
+                "name": "auth",
+                "destinationPath": "/auth"
+            }, {
+                "name": "addon-data",
+                "destinationPath": "/addon/data"
             }]
         }
     }
