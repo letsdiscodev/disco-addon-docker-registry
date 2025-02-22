@@ -9,6 +9,8 @@ packages = ["addon"]
 version = {attr = "addon.__version__"}
 
 [project.scripts]
+addon_cgi = "addon.cgi:main"
+addon_deploy = "addon.deploy:main"
 
 [tool.ruff.lint]
 # Enable the isort rules.

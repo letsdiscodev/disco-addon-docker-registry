@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from addon import keyvalues, storage
+from addon import keyvalues
 from addon.models.db import Session
 
 router = APIRouter()

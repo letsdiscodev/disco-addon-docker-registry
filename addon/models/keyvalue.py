@@ -1,20 +1,15 @@
-from __future__ import annotations
-
 from datetime import datetime, timezone
-from secrets import token_hex
 
-from sqlalchemy import String
+from sqlalchemy import String, UnicodeText
 from sqlalchemy.orm import Mapped, mapped_column
 
 from addon.models.meta import Base, DateTimeTzAware
 
 
-class User(Base):
-    __tablename__ = "users"
+class KeyValue(Base):
+    __tablename__ = "key_values"
 
-    id: Mapped[str] = mapped_column(
-        String(32), default=lambda: token_hex(16), primary_key=True
-    )
+    key: Mapped[str] = mapped_column(String(255), primary_key=True)
     created: Mapped[datetime] = mapped_column(
         DateTimeTzAware(),
         default=lambda: datetime.now(timezone.utc),
@@ -26,8 +21,4 @@ class User(Base):
         onupdate=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
-    name: Mapped[str] = mapped_column(String(255), nullable=False)
-    password: Mapped[str] = mapped_column(String(255), nullable=False)
-
-    def log(self):
-        return f"USER_{self.name}"
+    value: Mapped[str | None] = mapped_column(UnicodeText())
