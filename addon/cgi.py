@@ -4,7 +4,7 @@ logging.basicConfig(level=logging.INFO)
 
 log = logging.getLogger(__name__)
 
-log.info("Handling CGI request from Postgres addon")
+log.info("Handling CGI request from Docker Image Registry addon")
 
 
 def main():
